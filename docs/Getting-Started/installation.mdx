@@ -1,0 +1,83 @@
+---
+sidebar_position: 1
+title: "Installation"
+sidebar_label: "Installation"
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+:::info Requirements
+Xcode >= 11.6
+:::
+
+:::caution Expo Users
+This module is part of Expo - [see docs](https://docs.expo.io/versions/latest/sdk/date-time-picker/). However, Expo SDK may not contain the latest version of the module and therefore, the newest features and bugfixes may not be available in Expo. Use the command `expo install @react-native-community/datetimepicker` (not `yarn` or `npm`) to install this module - Expo will automatically install the latest version compatible with your Expo SDK (which may _not_ be the latest version of the module available).
+:::
+
+<Tabs
+  defaultValue="yarn"
+  values={[
+    { label: "npm", value: "npm" },
+    { label: "yarn", value: "yarn" },
+  ]}
+>
+  <TabItem value="npm">
+
+```bash
+npm install @react-native-community/datetimepicker --save
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```bash 
+yarn add @react-native-community/datetimepicker
+```
+
+  </TabItem>
+</Tabs>
+
+## iOS
+
+If you are using RN >= 0.60, only run `npx pod-install`. Then rebuild your project.
+
+For RN < 0.60, you need to link the dependency using react-native link:
+
+`react-native link @react-native-community/datetimepicker` 
+
+Then run `npx pod-install` and rebuild your project.
+
+
+## Android
+
+No further steps required
+
+## Windows
+
+#### Add the DateTimePickerWindows project to your solution
+
+1. Open the solution in Visual Studio 2019
+2. Right-click solution icon in Solution Explorer > Add > Existing Project Select:  
+
+    ` D:\{pathToYourApp}\node_modules\@react-native-community\datetimepicker\windows\DateTimePickerWindows\DateTimePickerWindows.vcxproj`
+
+#### **windows/myapp.sln**
+
+Add a reference to `DateTimePickerWindows` to your main application project. From Visual Studio 2019:
+
+Right-click main application project > Add > Reference...
+Check 'DateTimePickerWindows' from the 'Project > Solution' tab on the left.
+
+#### **pch.h**
+
+Add `#include "winrt/DateTimePicker.h"`.
+
+#### **app.cpp**
+
+Add `PackageProviders().Append(winrt::DateTimePicker::ReactPackageProvider());` before `InitializeComponent();`.
+
+
+:::caution Manual Instalation
+Check here for [more](manual-installation) information
+:::
